@@ -17,15 +17,15 @@ $PARAM['folders']['scripts']['csv']        = $PARAM['folders']['scripts']['root'
 $PARAM['folders']['scripts']['javascript'] = $PARAM['folders']['scripts']['root'].'/'."js";
 $PARAM['folders']['scripts']['sql']        = $PARAM['folders']['scripts']['root'].'/'."sql";
 
-$PARAM['application']['name']              = "Gestion des Accès Utilisateurs";
-$PARAM['application']['version']           = "1.0";
+$PARAM['application']['name']              = "[R] Framework";
+$PARAM['application']['version']           = "1.2";
 
 $PARAM['html']['title']                    = $PARAM['application']['name']." ".$PARAM['application']['version'];
 $PARAM['html']['charset']                  = "UTF-8";
 $PARAM['html']['meta']['application-name'] = $PARAM['application']['name']." ".$PARAM['application']['version'];
 $PARAM['html']['meta']['author']           = "David RIEHL";
-$PARAM['html']['meta']['description']      = "D. [R]iehl Framework";
-$PARAM['html']['meta']['keywords']         = "D. [R]iehl,Framework";
-$PARAM['html']['meta']['copyright']        = "D. [R]iehl Framework";
+$PARAM['html']['meta']['description']      = "[R] Framework";
+$PARAM['html']['meta']['keywords']         = "[R] Framework";
+$PARAM['html']['meta']['copyright']        = "[R] Framework";
 $PARAM['html']['meta']['robots']           = "all";
 ?>

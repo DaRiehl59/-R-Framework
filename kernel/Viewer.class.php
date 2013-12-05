@@ -67,7 +67,7 @@
 			self::$smarty->cache_lifetime = 0;
 			
 			self::$smarty->assign("head_title", $PARAM['html']['title']);
-			self::$smarty->assign("generator", 'D. [R]iehl Framework 1.1');
+			self::$smarty->assign("generator", '[R] Framework 1.2');
 			self::$smarty->assign("head_charset", $PARAM['html']['charset']);
 			
 			foreach($PARAM['html']['meta'] as $name => $content)
@@ -75,7 +75,6 @@
 				$metas[] = array('name' => $name, 'content' => $content);
 			}
 			self::$smarty->assign("head_metas", $metas);
-			// $smarty->assign("Name","Fred Irving Johnathan Bradley Peppergill",true);
 			
 			$folder = $PARAM['folders']['scripts']['css'];
 			$files = get_files($folder);

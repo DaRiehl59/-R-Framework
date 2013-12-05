@@ -20,7 +20,7 @@
 		
 		private static function display_default()
 		{
-			$title="D. [R]iehl Framework 1.0";
+			$title="[R] Framework 1.2";
 			$subtitle = "Welcome";
 			$message = "Welcome in your first page.";
 			Welcome_Viewer::display_default($title,$subtitle,$message);
