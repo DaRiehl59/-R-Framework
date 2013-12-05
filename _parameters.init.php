@@ -17,7 +17,7 @@ $PARAM['folders']['scripts']['csv']        = $PARAM['folders']['scripts']['root'
 $PARAM['folders']['scripts']['javascript'] = $PARAM['folders']['scripts']['root'].'/'."js";
 $PARAM['folders']['scripts']['sql']        = $PARAM['folders']['scripts']['root'].'/'."sql";
 
-$PARAM['application']['name']              = "D. [R]iehl Framework";
+$PARAM['application']['name']              = "Gestion des Accès Utilisateurs";
 $PARAM['application']['version']           = "1.0";
 
 $PARAM['html']['title']                    = $PARAM['application']['name']." ".$PARAM['application']['version'];
@@ -26,5 +26,6 @@ $PARAM['html']['meta']['application-name'] = $PARAM['application']['name']." ".$
 $PARAM['html']['meta']['author']           = "David RIEHL";
 $PARAM['html']['meta']['description']      = "D. [R]iehl Framework";
 $PARAM['html']['meta']['keywords']         = "D. [R]iehl,Framework";
-
+$PARAM['html']['meta']['copyright']        = "D. [R]iehl Framework";
+$PARAM['html']['meta']['robots']           = "all";
 ?>
