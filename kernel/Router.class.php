@@ -10,6 +10,11 @@ class Router
 	private static $parameters;
 	private static $URI_root;
 	
+	public static function get_controler()
+	{
+		return self::$controler;
+	}
+	
 	public static function get_action()
 	{
 		return self::$action;
@@ -32,8 +37,8 @@ class Router
 	
 	public static function parse_url()
 	{
-		$requestURI = explode('/', $_SERVER['REQUEST_URI']);
-		$scriptName = explode('/', $_SERVER['SCRIPT_NAME']);
+		$requestURI = explode('/', urldecode($_SERVER['REQUEST_URI']));
+		$scriptName = explode('/', urldecode($_SERVER['SCRIPT_NAME']));
 		
 		for($i= 0;$i < sizeof($scriptName);$i++)
 		{

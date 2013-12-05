@@ -111,6 +111,17 @@
 			
 			self::$smarty->assign("URI_root", Router::get_URI_root());
 
+			self::$smarty->assign("banner_title", $PARAM['application']['name']);
+			self::$smarty->assign("copyright", $PARAM['html']['meta']['copyright']);
+			
+			if(isset($_SESSION['droits']))
+			{
+				self::$smarty->assign("droits", $_SESSION['droits']);
+			}
+			if(isset($_SESSION['connected']))
+			{
+				self::$smarty->assign("connected", $_SESSION['connected']);
+			}
 			return self::$smarty;
 		}
 		

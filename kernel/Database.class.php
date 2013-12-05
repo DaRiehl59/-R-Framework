@@ -10,6 +10,7 @@
 		 * static constants definitions
 		 */
 		const host = "127.0.0.1";       # host
+		// const host = "172.20.4.253";       # host
 		const driver = "mysql";         # driver
 		const user = "root";            # database user
 		const password = "";            # database password
