@@ -1,7 +1,7 @@
 <?php
 	class Obj_Test_Viewer extends Viewer
 	{
-		var $smarty;
+		private static $smarty;
 		public static function display_item($item)
 		{
 			$smarty = parent::init_viewer();

@@ -9,13 +9,13 @@
 		/**
 		 * static constants definitions
 		 */
-		const host = "127.0.0.1"; # host
-		const driver = "mysql";   # driver
-		const user = "root";      # database user
-		const password = "";      # database password
-		const name = "test";      # database name
-		const charset = "utf8";   # database querying charset
-		const engine = "InnoDB";  # table default engine
+		const host = "127.0.0.1";       # host
+		const driver = "mysql";         # driver
+		const user = "root";            # database user
+		const password = "";            # database password
+		const name = "exemple";         # database name
+		const charset = "utf8";         # database querying charset
+		const engine = "InnoDB";        # table default engine
 		
 		/**
 		 * Database Handle
@@ -161,7 +161,7 @@
 		public static function deploy()
 		{
 			global $PARAM;
-			$files = get_files($PARAM['directories']['model']);
+			$files = get_files($PARAM['folders']['model']['class']);
 			$sql = "";
 			
 			Database::connect();
@@ -196,6 +196,8 @@
 					self::insert_into($table,$field_names,$test_values);
 				}
 			}
+			self::import_csv_files();
+			self::import_sql_files();
 			foreach($files as $file)
 			{
 				$class_name = substr($file,0,strlen($file)-10);
@@ -1703,6 +1705,76 @@
 			}
 			
 			return $result;
+		}
+		
+		/**
+		 * Import CSV Files in Database
+		 * @access private
+		 * @version 1.0
+		 */
+		public static function import_csv_files()
+		{
+			global $PARAM;
+			$folder = $PARAM['folders']['scripts']['csv'];
+			$files = get_files($folder);
+			foreach($files as $file)
+			{
+				if (($handle = fopen($folder.'/'.$file, "r")))
+				{
+					$table = substr($file,0,strlen($file)-4);
+					/*
+					 * first row is fields list
+					 */
+					$fields = fgetcsv($handle,0,';');
+					$values = array();
+					while (($row_values = fgetcsv($handle,0,';')))
+					{
+						$values[] = $row_values;
+					}
+					fclose($handle);
+					self::insert_into($table,$fields,$values);
+				}
+			}
+		}
+		
+		/**
+		 * Import SQL Files in Database
+		 * @access private
+		 * @version 1.0
+		 */
+		public static function import_sql_files()
+		{
+			global $PARAM;
+			$folder = $PARAM['folders']['scripts']['sql'];
+			$files = get_files($folder);
+			foreach($files as $file)
+			{
+				if (($handle = fopen($folder.'/'.$file, "r")))
+				{
+					/*
+					 * first row is fields list
+					 */
+					$query = "";
+					while (($row = fgets($handle)))
+					{
+						$query .= $row;
+					}
+					fclose($handle);
+					
+					// self::$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
+					try
+					{
+						$stmt = self::$dbh->prepare($query);
+						$result = $stmt->execute();
+					}
+					catch (PDOException $e)
+					{
+						echo $e->getMessage();
+						die();
+					}
+					return $result;
+				}
+			}
 		}
 	}
 ?>

@@ -8,6 +8,7 @@ class Router
 	private static $controler;
 	private static $action;
 	private static $parameters;
+	private static $URI_root;
 	
 	public static function get_action()
 	{
@@ -24,6 +25,11 @@ class Router
 		return self::default_action;
 	}
 	
+	public static function get_URI_root()
+	{
+		return self::$URI_root;
+	}
+	
 	public static function parse_url()
 	{
 		$requestURI = explode('/', $_SERVER['REQUEST_URI']);
@@ -33,10 +39,12 @@ class Router
 		{
 			if ($requestURI[$i] == $scriptName[$i])
 			{
+				$requestURI_root[]=$requestURI[$i];
 				unset($requestURI[$i]);
 			}
 		}
 		
+		self::$URI_root = implode('/',$requestURI_root);
 		$command = array_values($requestURI);
 		
 		if(isset($command[0]))
@@ -71,7 +79,7 @@ class Router
 	public static function load_controler()
 	{
 		global $PARAM;
-		$files = get_files($PARAM['directories']['controler']);
+		$files = get_files($PARAM['folders']['controler']['root']);
 		$controlers = array();
 		foreach($files as $file)
 		{

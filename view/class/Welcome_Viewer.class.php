@@ -1,7 +1,7 @@
 <?php
 	class Welcome_Viewer extends Viewer
 	{
-		var $smarty;
+		private static $smarty;
 		
 		public static function display_default($title, $subtitle, $message)
 		{

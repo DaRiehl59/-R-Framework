@@ -1,4 +1,9 @@
 <?php
+	function __autoload($classname)
+	{
+		$filename = "./kernel/". $classname .".class.php";
+		require_once($filename);
+	}
 	/**
 	 * Fonction de récupération de fichiers à partir d'un dossier
 	 * @author David RIEHL
